@@ -11,12 +11,22 @@
 		blueScore = 20;
 	}
 
+	function updateBlueScore(e){
+		const updateScore = e.detail;
+		blueScore += updateScore;
+	}
+	function updateRedscore(e){
+		const updateScore = e.detail;
+		redScore += updateScore
+	}
+
 </script>
 
 <main>
 	<h1>Magic The Gathering Counter</h1>
 	<div id="container-controler">
 		<Player 
+		on:points={updateBlueScore}
 		{gameOver}
 		fontColor = "#0000AA"
 		winningText = "Blue Wins" 
@@ -24,6 +34,7 @@
 		won = {blueWon}
 		/>
 		<Player 
+		on:points={updateRedscore}
 		{gameOver}
 		fontColor = "#AA0000"
 		winningText = "Red Wins" 

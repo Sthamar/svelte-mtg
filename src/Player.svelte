@@ -1,15 +1,18 @@
 <script>
+    import {createEventDispatcher} from "svelte";
     export let score;
     export let winningText;
     export let won;
     export let fontColor;
     export let gameOver = false;
 
+    const dispatch = createEventDispatcher();
+
     function plusOne(){
-        score = score + 1
+        dispatch("points", 1);
     }
     function minusOne(){
-        score = score - 1
+        dispatch("points", -1);
     }
 
 </script>
