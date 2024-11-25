@@ -4,6 +4,14 @@
     export let won;
     export let fontColor;
     export let gameOver = false;
+
+    function plusOne(){
+        score = score + 1
+    }
+    function minusOne(){
+        score = score - 1
+    }
+
 </script>
 
 <style>
@@ -33,8 +41,8 @@
 
 <div class="player" style="color:{fontColor}">
     <h2>{score}</h2>
-    <button disabled={gameOver} class="plus">+</button>
-    <button disabled={gameOver} class="minus">-</button>
+    <button disabled={gameOver} on:click={plusOne} class="plus">+</button>
+    <button disabled={gameOver} on:click={minusOne} class="minus">-</button>
     {#if won}
         <h2>{winningText}</h2>
     {/if}
