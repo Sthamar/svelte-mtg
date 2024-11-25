@@ -1,12 +1,31 @@
 <script>
 	import Player  from "./Player.svelte";
+	let redScore = 20;
+	let blueScore = 20;
+	$: blueWon = redScore <= 0;
+	$: redWon = blueScore <= 0;
+	$: gameOver = blueWon || redWon;
+
+
 </script>
 
 <main>
 	<h1>Magic The Gathering Counter</h1>
 	<div id="container-controler">
-		<Player />
-		<Player />
+		<Player 
+		{gameOver}
+		fontColor = "#0000AA"
+		winningText = "Blue Wins" 
+		score={blueScore}
+		won = {blueWon}
+		/>
+		<Player 
+		{gameOver}
+		fontColor = "#AA0000"
+		winningText = "Red Wins" 
+		score={redScore}
+		won = {redWon}
+		/>
 	</div>
 	<button>Start Game</button>
 </main>
